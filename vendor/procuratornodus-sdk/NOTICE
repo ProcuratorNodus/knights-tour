@@ -1,0 +1,55 @@
+Procurator Nodus
+Copyright 2025 Joel Mason and the Procurator Nodus contributors
+
+This product includes software developed by Joel Mason and the
+Procurator Nodus contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+--------------------------------------------------------------------------------
+THIRD-PARTY VENDORED COMPONENTS
+--------------------------------------------------------------------------------
+
+This distribution vendors third-party components under `vendor/`. Each retains
+its own upstream license, reproduced in full at the path given below. Nothing in
+this NOTICE or in the Apache-2.0 license above alters those terms.
+
+  vendor/argon2/          — see vendor/argon2/LICENSE
+                            (and vendor/argon2/argon2/LICENSE for the upstream
+                            reference implementation it builds against)
+  vendor/ajv/             — see vendor/ajv/LICENSE
+  vendor/nodemailer/      — see vendor/nodemailer/LICENSE
+
+Vendored files are a hard tooling boundary: they are excluded from this
+project's quality gates and are not modified to PN style. See the file headers
+in each vendored tree.
+
+`packages/cli/src/store/zustand/` contains files vendored verbatim from upstream
+zustand v5.0.12 (MIT). The retained upstream license is
+`LICENSES/ZUSTAND-MIT.txt`; the CLI npm tarball must carry that text before
+publish.
+
+--------------------------------------------------------------------------------
+DEPENDENCY LICENSE AUDIT
+--------------------------------------------------------------------------------
+
+The locked runtime dependency closure was audited on 2026-07-26. All resolved
+licenses are permissive Apache-compatible families; no Category-B or
+Category-X dependency was found. The complete package/version/license inventory,
+peer-dependency caveats, methodology, and npm-tarball findings are recorded in
+`THIRD_PARTY_LICENSES.md`.
+
+Registry dependencies are installed alongside PN packages rather than bundled
+inside them, so they do not add attribution text to this NOTICE. The vendored
+source components that are part of this source distribution remain enumerated
+above with pointers to their retained license texts.

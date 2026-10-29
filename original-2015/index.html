@@ -1,0 +1,344 @@
+
+
+<head>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="files/cleangame.min.css">
+
+    <style>
+
+        table{width:672px;height:672px;}
+
+        a:hover{cursor:pointer;}
+
+        .footer{text-align:left;-webkit-text-align:right;}
+
+        .gamepics{//-moz-transform:scale(0.5);//-webkit-transform:scale(0.5);//transform:scale(0.5);}
+
+        .browsecompatpic{}
+
+        .infobox{visibility:hidden;width:672px;}
+
+        .tdcls{width:84px;height:84px;background-color:transparent;text-align:center;}
+
+        .playpiece{width:80px;height:80px;}
+
+        .DarkBoard{width:80px;height:80px;background-color:transparent;display:inline-block;}
+
+        .LightBoard{width:80px;height:80px;background-color:transparent;display:inline-block;}
+
+        .infobox{border-radius:10px;padding:3px;text-align:left;}
+
+        .gamebutton{width:130px;height:50px;padding:0px;}
+
+        .infotd{border-radius:15px;text-align:center;width:270px;}
+
+        .infotdselected{background-color:#1e73be;color:#FFFFFF;}
+
+        .infotdavailable{background-color:#800080;color:#FFFFFF;}
+
+        .infotdfuture{background-color:#00FF00;}
+
+        .infotdbad{background-color:red;color:#FFFFFF;}
+
+        .LightBoard{background-image: url(pics/LightBoard.png);}
+
+        .DarkBoard{background-image: url(pics/DarkBoard.png);}
+
+        .futuretooltip{display:none;z-index:1000;text-align:center;}
+
+        .invisible{display:none;}
+
+        .infoxboxcenter{text-align:center;}
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="invisible">
+
+        <img src="pics/Knight.png" alt="Knight" height="80" width="80">
+
+        <img src="pics/DarkBoard.png" alt="DarkBoard" height="80" width="80">
+
+        <img src="pics/LightBoard.png" alt="LightBoard" height="80" width="80">
+
+        <img src="pics/PreviousKnight.png" alt="PreviousKnight" height="80" width="80">
+
+        <img src="pics/KnightClear.png" alt="KnightClear" height="80" width="80">
+
+        <img src="pics/smilesmall.png" alt="SmileSmall" height="80" width="80">
+
+        <img src="pics/frownsmall.png" alt="FrownSmall" height="80" width="80">                
+
+    </div>
+
+    <div class="container">
+
+        <div class="row gamerow">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+
+                <br><p><img style="float: left;" src="pics/Knight.png" alt="Knight" height="80" width="80"></p>
+
+                <br><br><br><br><p>Knight's Tour is a game of a traveling chess piece. The Knight moves in "L" shaped patterns across the board, and the purpose of this game is to find each and every square of the board with the Knight using each square only once.</p>
+
+                <p>The Knight can move one space over and two up or two spaces over and one up. The piece can move in any direction, in the one and two pattern. You can start anywhere. Just click a board square.</p>
+
+                <p>Remember to move to the spaces that have the least number of available moves and try your best to not leave any orphans anywhere. All board squares have to be accounted for. Good Luck!</p>
+
+                <p>
+
+                    <b>Color Key:</b>
+
+                    <p class="infotd infotdselected">Selected Space</p>
+
+                    <p class="infotd infotdavailable">Available Move</p>
+
+                    <p class="infotd infotdfuture invisible">Available Future Move<br>Number: Availabe From There</p>
+
+                    <p class="infotd infotdbad">Bad Move</p>
+
+                    <p class="infotd"><a class="hintsonoff autolink">Hints "On/Off"</a></p></p>
+
+                    <p class="infotd"><a class="automagically autolink">Solve "Automagically!"</a> In development.</p>
+
+                    <p class="infotd"><input class="resetboard gamebutton" type="button" value="Reset Board" />&nbsp;&nbsp;<input class="backmove gamebutton" type="button" value="Back One" /></p>
+
+                </p>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 infoxboxcenter">
+
+                <h5 class="infobox"><p>text</p><p>text</p></h5>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 gamediv">
+
+                <div class="futuretooltip ft0"></div>
+
+                <div class="futuretooltip ft1"></div>
+
+                <div class="futuretooltip ft2"></div>
+
+                <div class="futuretooltip ft3"></div>
+
+                <div class="futuretooltip ft4"></div>
+
+                <div class="futuretooltip ft5"></div>
+
+                <div class="futuretooltip ft6"></div>
+
+                <div class="futuretooltip ft7"></div>
+
+                <table id="game" class="gametable">
+
+                    <tbody>
+
+                        <tr>  
+
+                            <td class="tdcls" id="0"><div class="DarkBoard 0"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="1"><div class="LightBoard 1"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="2"><div class="DarkBoard 2"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="3"><div class="LightBoard 3"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="4"><div class="DarkBoard 4"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="5"><div class="LightBoard 5"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="6"><div class="DarkBoard 6"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="7"><div class="LightBoard 7"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="8"><div class="LightBoard 8"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="9"><div class="DarkBoard 9"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="10"><div class="LightBoard 10"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="11"><div class="DarkBoard 11"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="12"><div class="LightBoard 12"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="13"><div class="DarkBoard 13"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="14"><div class="LightBoard 14"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="15"><div class="DarkBoard 15"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="16"><div class="DarkBoard 16"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="17"><div class="LightBoard 17"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="18"><div class="DarkBoard 18"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="19"><div class="LightBoard 19"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="20"><div class="DarkBoard 20"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="21"><div class="LightBoard 21"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="22"><div class="DarkBoard 22"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="23"><div class="LightBoard 23"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="24"><div class="LightBoard 24"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="25"><div class="DarkBoard 25"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="26"><div class="LightBoard 26"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="27"><div class="DarkBoard 27"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="28"><div class="LightBoard 28"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="29"><div class="DarkBoard 29"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="30"><div class="LightBoard 30"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="31"><div class="DarkBoard 31"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="32"><div class="DarkBoard 32"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="33"><div class="LightBoard 33"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="34"><div class="DarkBoard 34"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="35"><div class="LightBoard 35"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="36"><div class="DarkBoard 36"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="37"><div class="LightBoard 37"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="38"><div class="DarkBoard 38"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="39"><div class="LightBoard 39"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="40"><div class="LightBoard 40"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="41"><div class="DarkBoard 41"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="42"><div class="LightBoard 42"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="43"><div class="DarkBoard 43"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="44"><div class="LightBoard 44"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="45"><div class="DarkBoard 45"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="46"><div class="LightBoard 46"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="47"><div class="DarkBoard 47"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="48"><div class="DarkBoard 48"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="49"><div class="LightBoard 49"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="50"><div class="DarkBoard 50"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="51"><div class="LightBoard 51"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="52"><div class="DarkBoard 52"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="53"><div class="LightBoard 53"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="54"><div class="DarkBoard 54"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="55"><div class="LightBoard 55"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>
+
+                        <tr>  
+
+                            <td class="tdcls" id="56"><div class="LightBoard 56"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="57"><div class="DarkBoard 57"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="58"><div class="LightBoard 58"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="59"><div class="DarkBoard 59"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="60"><div class="LightBoard 60"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="61"><div class="DarkBoard 61"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="62"><div class="LightBoard 62"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>  
+
+                            <td class="tdcls" id="63"><div class="DarkBoard 63"><img class="playpiece" src="pics/KnightClear.png" alt="KnightClear" height="80" width="80"></div></td>
+
+                        </tr>              </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">                
+
+                <p>© Freethecube.com Joel E. Mason 2015</p>
+
+                <p>Credits and Contributions: <a href="https://cliparts.co/clipart/2517827" target="_blank">Clip art image by Cliparts.co</a></p>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 footer">
+
+                <p class="footerinfo" style="visibility:hidden">80,200,embed</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="files/jquery.js"></script>
+
+    <script src="files/anicolorsmin.js"></script>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="files/underscore-min.js"></script>
+
+    <script src="files/game.js"></script>
+
+    <p class="log"></p>
+
+</body>
+
+
+
